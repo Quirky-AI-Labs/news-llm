@@ -12,7 +12,7 @@ from newsllm.structures import News
 from newsllm.utils import log_traceback, timeit
 
 
-class TechCrunch(BaseScraper, ScraperMixins):
+class TechCrunchScraper(BaseScraper, ScraperMixins):
     """
     Scraper for TechCrunch.
 

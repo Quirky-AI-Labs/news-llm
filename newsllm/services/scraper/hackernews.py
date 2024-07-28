@@ -14,7 +14,7 @@ from newsllm.structures import News
 from newsllm.utils import log_traceback, timeit
 
 
-class HackerNews(BaseScraper, ScraperMixins):
+class HackerNewsScraper(BaseScraper, ScraperMixins):
     """
     Scraper for Hacker News.
 
