@@ -29,7 +29,7 @@ class ModelNotFoundError(Exception):
     pass
 
 
-class BaseProvider:
+class BaseLLMProvider:
     """Base class for all providers to interact with language models."""
 
     def __init__(self, api_key: str, base_url: str):

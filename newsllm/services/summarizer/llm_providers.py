@@ -5,10 +5,10 @@ Description: Provider classes for different summarization APIs, inherited from t
 
 import os
 
-from newsllm.services.summarizer.base import BaseProvider, ModelNotFoundError
+from newsllm.services.summarizer.base import BaseLLMProvider, ModelNotFoundError
 
 
-class OpenRouterProvider(BaseProvider):
+class OpenRouterProvider(BaseLLMProvider):
     """
     Provider class for OpenRouter API.
 
@@ -34,7 +34,7 @@ class OpenRouterProvider(BaseProvider):
         )
 
 
-class OpenAIProvider(BaseProvider):
+class OpenAIProvider(BaseLLMProvider):
     """
     Provider class for OpenAI API.
 
@@ -68,7 +68,7 @@ class ProviderFactory:
     }
 
     @classmethod
-    def get_provider(cls, provider_name: str) -> BaseProvider:
+    def get_provider(cls, provider_name: str) -> BaseLLMProvider:
         """
         Get a provider instance based on the provider name.
 
