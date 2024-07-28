@@ -112,7 +112,7 @@ class TechCrunch(BaseScraper, ScraperMixins):
             List[News]: A list of scraped news items.
         """
         url = f"{self.base_url}/wp-json/wp/v2/posts?categories=577047203&limit=50"
-        post_collection = self._handle_site_request(url)
+        post_collection = await self._handle_site_request(url)
         if not post_collection:
             return []
         posts = await self._get_standard_data_list(post_collection, **kwargs)
