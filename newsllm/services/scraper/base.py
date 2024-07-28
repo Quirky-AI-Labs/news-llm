@@ -4,8 +4,9 @@ Description: This module provides the base classes for web scraping, including B
 """
 
 from abc import ABC, abstractmethod
-from typing import List
+from typing import Dict, List, Union
 
+import aiohttp
 import requests
 from bs4 import BeautifulSoup
 from loguru import logger
@@ -115,7 +116,7 @@ class ScraperMixins:
             page = await browser.new_page()
             html_content = None
             try:
-                await page.goto(url, timeout=60000)  # 60 seconds timeout
+                await page.goto(url, timeout=60000)
                 await page.wait_for_load_state("networkidle")
                 html_content = await page.content()
             except requests.exceptions.Timeout as e:
@@ -127,3 +128,27 @@ class ScraperMixins:
             finally:
                 await browser.close()
             return html_content
+
+    @staticmethod
+    async def _handle_site_request(self, url: str) -> Union[Dict, List, str]:
+        """
+        Handles requests to the Hacker News site for specific post data.
+
+        Args:
+            url (str): The URL to request.
+
+        Returns:
+            dict: The post data.
+        """
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url) as response:
+                    if response.status != 200:
+                        logger.error(f"Failed to fetch post data from Hacker News: {response.status}")
+                        return {}
+                    return await response.json()
+        except Exception as e:
+            logger.error(f"Error on requesting data from the site: {self.__class__.__name__}")
+            logger.error(f"Error: {e}")
+            log_traceback()
+            return {}
