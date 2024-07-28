@@ -25,6 +25,7 @@ class HackerNews(BaseScraper, ScraperMixins):
 
     scraper_name = "HackerNews"
     base_url = "https://news.ycombinator.com"
+    include_in_factory = True
 
     def get_item_url(self, item_id: str) -> str:
         """

@@ -23,6 +23,7 @@ class TechCrunch(BaseScraper, ScraperMixins):
 
     scraper_name = "TechCrunch"
     base_url = "https://techcrunch.com"
+    include_in_factory = True
 
     @timeit("TechCrunch single post scraping")
     async def _get_single_post(self, post, **kwargs) -> News:
