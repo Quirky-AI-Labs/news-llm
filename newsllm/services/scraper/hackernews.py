@@ -7,7 +7,6 @@ import os
 from datetime import datetime
 from typing import List
 
-import aiohttp
 from loguru import logger
 
 from newsllm.services.scraper.base import BaseScraper, ScraperMixins
