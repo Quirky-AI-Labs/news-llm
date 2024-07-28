@@ -27,6 +27,7 @@ class BaseScraper(ABC):
 
     scraper_name = "BaseScraper"
     base_url = None
+    include_in_factory = False
 
     async def scrape(self, **kwargs) -> List[News]:
         """
@@ -48,18 +49,6 @@ class BaseScraper(ABC):
             logger.error(f"Error occurred in {self.__class__.__name__} | {e}")
             log_traceback()
         return news_list
-
-    @classmethod
-    def inheritors(cls):
-        """
-        Returns a list of subclasses of the current class.
-
-        Returns:
-            List[type]: A list of subclasses.
-        """
-        subclasses = cls.__subclasses__()
-        logger.info(f"Subclasses of {cls.__name__}: {subclasses}")
-        return subclasses
 
     @abstractmethod
     async def _scrape(self, **kwargs) -> List[News]:
@@ -130,7 +119,7 @@ class ScraperMixins:
             return html_content
 
     @staticmethod
-    async def _handle_site_request(self, url: str) -> Union[Dict, List, str]:
+    async def _handle_site_request(url: str) -> Union[Dict, List, str]:
         """
         Handles requests to the Hacker News site for specific post data.
 
