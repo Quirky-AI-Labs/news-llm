@@ -10,12 +10,12 @@ import re
 from loguru import logger
 
 from newsllm.services.summarizer.base import BaseLLMProvider
-from newsllm.services.summarizer.llm_providers import ProviderFactory
+from newsllm.services.summarizer.llm_providers import LLMProviderFactory
 
 DEFAULT_PROVIDER = os.getenv("SUMMARY_PROVIDER", "openrouter")
 SUMMARIZER_MODEL = os.getenv("SUMMARIZER_MODEL", "google/gemini-flash-1.5")
 
-DEFAULT_SUMMARY_PROVIDER: BaseLLMProvider = ProviderFactory.get_provider(DEFAULT_PROVIDER)
+DEFAULT_SUMMARY_PROVIDER: BaseLLMProvider = LLMProviderFactory.get_provider(DEFAULT_PROVIDER)
 
 
 class Summarizer:
