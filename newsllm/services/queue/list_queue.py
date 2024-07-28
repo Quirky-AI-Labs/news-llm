@@ -20,6 +20,8 @@ class ListQueue(AbstractQueue, metaclass=SingletonMetaBase):
     of ListQueue exists for each unique queue name.
     """
 
+    queue_type = "list"
+
     def __init__(self, queue_name: str = ""):
         """
         Initialize the ListQueue with an optional name.

@@ -21,6 +21,8 @@ class RedisQueue(AbstractQueue, metaclass=SingletonMetaBase):
     of RedisQueue exists for each unique queue name.
     """
 
+    queue_type = "redis"
+
     def __init__(self, queue_name: str = "", url: str = Config.REDIS_QUEUE_URL):
         """
         Initialize the RedisQueue with a queue name and Redis URL.

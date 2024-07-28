@@ -14,6 +14,8 @@ class AbstractQueue(ABC):
     This class provides an interface for queue operations that must be implemented by subclasses.
     """
 
+    queue_type = "abstract"
+
     def __init__(self, queue_name: str = ""):
         """
         Initialize the queue with an optional name.
