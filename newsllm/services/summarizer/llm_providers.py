@@ -57,7 +57,7 @@ class OpenAIProvider(BaseLLMProvider):
         super().__init__(api_key, "https://api.openai.com/v1")
 
 
-class ProviderFactory:
+class LLMProviderFactory:
     """
     Factory class to get provider instances based on provider name.
     """
