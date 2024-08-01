@@ -29,6 +29,8 @@
 
 ## Installation
 
+**Not Available for now**
+
 ```bash
 pip install newsllm
 ```
