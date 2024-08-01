@@ -29,6 +29,8 @@
 
 ## Installation
 
+**Note: Package not yet published**
+
 ```bash
 pip install newsllm
 ```
